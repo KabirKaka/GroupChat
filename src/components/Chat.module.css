@@ -1,0 +1,148 @@
+.container {
+  height: 89vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat {
+  max-height: 80vh;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the thumb */
+  border-radius: 1rem; /* Rounded corners for the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color of the thumb on hover */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color of the track */
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-track:hover {
+  background-color: #ccc; /* Color of the track on hover */
+}
+
+.chatBox {
+  display: flex;
+  align-items: flex-start;
+  margin: 5px 10px;
+  border-radius: 5px 20px 5px;
+  padding: 1rem 0.5rem;
+}
+
+.receive {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 5px 0;
+}
+
+.receive .user-profile {
+  border-radius: 50%;
+  width: 50px;
+  margin: 0 6px;
+}
+
+
+.receive .user-data p {
+  margin: 6px 0;
+  font-size: 18px;
+}
+
+.receive .user-data {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 10px 12px;
+  border-radius: 5px 20px 5px;
+  max-width: 60%;
+  word-wrap: break-word;
+}
+
+.send {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.send .user-profile {
+  border-radius: 50%;
+  width: 50px;
+  margin: 0 6px;
+}
+
+.send .user-data h6 {
+  text-align: right;
+}
+
+.send .user-data p {
+  margin: 6px 0;
+  font-size: 18px;
+  text-align: right;
+}
+
+.send .user-data {
+  background-color: rgb(67, 71, 80);
+  color: white;
+  padding: 10px 12px;
+  border-radius: 20px 5px 20px 5px;
+  max-width: 60%;
+  word-wrap: break-word;
+}
+
+
+/* footer / input field */
+
+footer{background-color: #434750;
+    width: 100%;
+}
+
+.user-input {
+  display: flex;
+  padding: 1rem 2rem;}
+
+.user-input input {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem 0 0 1rem;
+  
+  font-size: 14px;
+}
+
+.user-input input:focus {
+  outline: none;
+}
+
+.user-input button {
+  width: 17vw;
+  padding: 1rem;
+  border: none;
+  border-radius: 0 1rem 1rem 0;
+  background-color: grey;
+  cursor: pointer;
+  color: white;
+  font-weight: bolder;
+  font-size: 14px;
+  text-align: center;
+
+
+}
+
+.user-input button:hover {
+  background-color: rgb(100, 99, 99);
+}
+
