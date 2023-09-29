@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 .container {
   height: 89vh;
   display: flex;
@@ -149,12 +153,12 @@ footer{background-color: #434750;
 .loaderButton {
   position: absolute;
   top: -50px; 
-  left: calc(50% - 50px); /* Centered horizontally */
+  left: 45vw; /* Centered horizontally */
   padding: 10px 20px;
   font-size: 16px;
   /* background-color: #434750; */
-  background-color: white;
-  color: black;
+  background-color: #434750;
+  color: white;
   border: none;
   cursor: pointer;
   border-radius: 1rem;
