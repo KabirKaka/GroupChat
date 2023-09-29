@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef, useEffect, useCallback } from 'react'
+import React, { Fragment, useState, useRef, useEffect } from 'react'
 import { collection, getDocs, addDoc, serverTimestamp, query, orderBy, limit } from 'firebase/firestore/lite';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from "../store/firebase"
@@ -7,28 +7,28 @@ import styles from "./Chat.module.css"
 import profilePic from "../assets/profile.png";
 
 const Chat = () => {
-    const inputRef = useRef();
     const scroll = useRef();
     const [messageList, setMessageList] = useState([]);
+    const [msg, setMsg] = useState("");
     const [user] = useAuthState(auth)
     const [userData] = user.providerData;
-    const { displayName, photoURL, uid } = userData
+    const { displayName, photoURL, uid } = userData;
 
-    
-    const getMessages = useCallback(async () => {
+    console.log("chat running")
+    const getMessages = async () => {
+        console.log("get message from firebase")
         const messagesCol = collection(db, 'messages');
         const q = query(messagesCol, orderBy('createdAt'), limit(50));
         const messagesSnapshot = await getDocs(q);
         setMessageList(messagesSnapshot.docs.map(doc => doc.data()));
-    }, [])
-    console.log(messageList)
+        setTimeout(() => {
+            scroll.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }, 500);
+    }
 
     useEffect(() => {
         getMessages();
-        setTimeout(() => {
-            scroll.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        }, 300);
-    }, [getMessages])
+    }, [])
 
     const storeMessage = async (message) => {
         try {
@@ -38,24 +38,23 @@ const Chat = () => {
         } catch (error) {
             console.error('Error storing message: ', error);
         }
+        setMsg("")
+        getMessages();
     };
 
-    const submitHandler = async (event) => {
+    const submitHandler = (event) => {
         event.preventDefault();
+        if(msg === ""){
+            return
+        }
         const newMessage = {
             createdAt: serverTimestamp(),
-            message: inputRef.current.value,
+            message: msg,
             displayName,
             photoURL,
             uid,
         }
-        await storeMessage(newMessage);
-        getMessages();
-        inputRef.current.value = '';
-        console.log("submit handler running")
-        setTimeout(() => {
-            scroll.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        }, 300);
+        storeMessage(newMessage);
     }
 
     return (
@@ -77,7 +76,8 @@ const Chat = () => {
                 </main>
                 <footer >
                     <form onSubmit={submitHandler} className={styles["user-input"]}>
-                        <input type="text" placeholder='message...' ref={inputRef} />
+                        <input type="text" placeholder='message...' value={msg} onChange={event =>
+                            setMsg(event.target.value)} />
                         <button type='submit'>Send</button>
                     </form>
                 </footer>
