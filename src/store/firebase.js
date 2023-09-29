@@ -3,12 +3,12 @@ import { getFirestore } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD7ctHykSvO6SMM9Ru23c0bxqqEhtEYhII",
-  authDomain: "quickchat-58126.firebaseapp.com",
-  projectId: "quickchat-58126",
-  storageBucket: "quickchat-58126.appspot.com",
-  messagingSenderId: "798322518825",
-  appId: "1:798322518825:web:e32a63fc2353b08bfde538",
+  apiKey: "AIzaSyBmRnWX2PHhDVwfa08NRcuvFdM_AQSt6eI",
+  authDomain: "groupchat-2125c.firebaseapp.com",
+  projectId: "groupchat-2125c",
+  storageBucket: "groupchat-2125c.appspot.com",
+  messagingSenderId: "457920578190",
+  appId: "1:457920578190:web:056d2f58f45af7bc0ebfdf"
 };
 
 const app = initializeApp(firebaseConfig);

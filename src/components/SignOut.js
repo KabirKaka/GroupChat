@@ -8,7 +8,6 @@ function SignOut() {
 
     const signOutHandler = () =>{
         auth.signOut();
-        console.log("SignOut Successfull")
     }
 
     return (

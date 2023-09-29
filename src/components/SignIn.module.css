@@ -13,8 +13,8 @@
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12);
 
-  min-height: 300px;
-  width: 30vw;
+  min-height: 250px;
+  width: 350px;
   margin: 100px auto;
   background: white;
   border-radius: 5px;
@@ -32,7 +32,7 @@
     padding: 1rem;
     border: none;
     border-radius: 1rem;
-    width: 12vw;
+    width: 170px;
     margin: 10px 0;
     cursor: pointer;
 }

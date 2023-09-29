@@ -8,22 +8,24 @@ import profilePic from "../assets/profile.png";
 
 const Chat = () => {
     const scroll = useRef();
+    const [showLoader, setShowLoader] = useState(false);
     const [messageList, setMessageList] = useState([]);
     const [msg, setMsg] = useState("");
     const [user] = useAuthState(auth)
     const [userData] = user.providerData;
     const { displayName, photoURL, uid } = userData;
 
-    console.log("chat running")
     const getMessages = async () => {
-        console.log("get message from firebase")
-        const messagesCol = collection(db, 'messages');
+        const messagesCol = collection(db, 'chatmessages');
         const q = query(messagesCol, orderBy('createdAt'), limit(50));
         const messagesSnapshot = await getDocs(q);
         setMessageList(messagesSnapshot.docs.map(doc => doc.data()));
         setTimeout(() => {
             scroll.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }, 500);
+        setTimeout(() => {
+            setShowLoader(true)
+        }, 15000);
     }
 
     useEffect(() => {
@@ -32,14 +34,12 @@ const Chat = () => {
 
     const storeMessage = async (message) => {
         try {
-            const collectionRef = collection(db, 'messages');
-            const docRef = await addDoc(collectionRef, message);
-            console.log('Message stored with ID: ', docRef.id);
+            const collectionRef = collection(db, 'chatmessages');
+            await addDoc(collectionRef, message);
         } catch (error) {
             console.error('Error storing message: ', error);
         }
         setMsg("")
-        getMessages();
     };
 
     const submitHandler = (event) => {
@@ -57,11 +57,18 @@ const Chat = () => {
         storeMessage(newMessage);
     }
 
+    const loaderButtonClickHandler = ()=>{
+        setShowLoader(false);
+        getMessages();
+    }
+
+    const loaderButtonClasses = `${styles.loaderButton} ${showLoader ? styles.appearButton : "" }`
     return (
         <Fragment>
             <SignOut />
             <div className={styles.container}>
                 <main className={styles.chat}>
+                    <button className={loaderButtonClasses} onClick={loaderButtonClickHandler}>Check New Messages</button>
                     {messageList.map(({ id, uid: userId, message, photoURL, displayName }) => (
                         <div key={id} className={`${styles.chatBox} ${userId === uid ? styles.send : styles.receive}`}>
                             <img src={photoURL} alt={profilePic} className={styles["user-profile"]} />
