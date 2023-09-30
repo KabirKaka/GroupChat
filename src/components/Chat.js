@@ -36,7 +36,6 @@ const Chat = () => {
         scroll.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }},[messageList.length])
 
-    // console.log(messageList)
     useEffect(() => {
         const unsubscribe = getMessages();
         return () => unsubscribe();

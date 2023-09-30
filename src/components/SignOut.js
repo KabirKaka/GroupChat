@@ -9,26 +9,19 @@ function SignOut({ userId, usersDataList }) {
     const [showDialog, setShowDialog] = useState(false)
 
     const signOutHandler = () => {
-        console.log("signout handler running")
         setShowDialog((prevState)=> !prevState);
     }
 
     const deleteUserMessagesFromDB = () => {
-        console.log("delete message handler running")
-        console.log(usersDataList)
-        console.log(userId)
         const currentUserData = usersDataList.filter((data) => data.uid === userId)
-        console.log(currentUserData)
         currentUserData.map(async (data) => {
             await deleteDoc(doc(db, "chatmessages", data.id));
         })
-        console.log("your data is successfully deleted!")
         setShowDialog(false)
         signOut();
     }
     
     const signOut = () =>{
-        console.log("signout functiion")
         auth.signOut();
     }
 
