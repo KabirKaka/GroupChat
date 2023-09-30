@@ -149,22 +149,3 @@ footer{background-color: #434750;
 }
 
 
-/* loader button */
-.loaderButton {
-  position: absolute;
-  top: -50px; 
-  left: 45vw; /* Centered horizontally */
-  padding: 10px 20px;
-  font-size: 16px;
-  /* background-color: #434750; */
-  background-color: #434750;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 1rem;
-  transition: top 0.5s ease-in-out; 
-}
-
-.appearButton{
-  top:80px;
-}

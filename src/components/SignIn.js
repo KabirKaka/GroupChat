@@ -13,8 +13,8 @@ function SignIn() {
     return (
         <div className={styles.container}>
             <div className={styles.card}>
-                <h1>SignIn with Google</h1>
-                <button onClick={signInHandler}>SignIn</button>
+                <h1>GroupChat</h1>
+                <button onClick={signInHandler}>SignIn with Google</button>
             </div>
         </div>
     )
