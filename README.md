@@ -1,25 +1,45 @@
-# GroupChat App - A Real-time Group Chat App 🚀💬
+# GroupChat · Real-time Group Chat
 
-Welcome to "GroupChat" - a dynamic real-time group chat application that has redefined communication! 🌐
+A real-time group chat app built with React and Firebase. Sign in with Google and chat with everyone in the room instantly.
 
-## Key Features:
+**Live demo:** https://group-chat-messanger-app.vercel.app/
 
-1. **Real-Time Chat Experience:** Seamlessly connect with friends, colleagues, or family members in real-time. Say goodbye to delayed messages! ⏰📲
+## Features
 
-2. **Google Account Login:** Enjoy a hassle-free login experience using your Google account. 🔑📧
+- Google sign-in with Firebase Authentication
+- Live message stream from Cloud Firestore (`onSnapshot`, latest 50 messages, ordered by time)
+- Messages stamped with server timestamps
+- On sign-out, users can choose to delete their messages, which disappear for everyone in real time
 
-3. **Logout with Control:** When you sign out, you have the option to remove all your chat messages, which disappear in real-time from all other chats. Alternatively, you can choose to keep your messages visible to others. Customize your privacy to your liking! 🚪🔒
+## Tech stack
 
-4. **Built with React:** The application was crafted using React for a responsive and user-friendly interface. ⚛️🌟
+- React
+- Firebase Authentication
+- Cloud Firestore
+- react-firebase-hooks
+- CSS Modules
 
-5. **Firebase Authentication:** Trust in Firebase's robust authentication system to keep your data secure. 🔐🔥
+## Getting started
 
-6. **Firestore for Real-Time Data:** Leverage Firestore for seamless real-time data synchronization. 🔄📊
+Add your Firebase project config in `src/store/firebase.js`, then:
 
-7. **Firebase React Hooks:** Employ cutting-edge Firebase React Hooks for efficient state management. 🪝⚙️
+```bash
+npm install
+npm start
+```
 
-## Live Site:
+The app runs at http://localhost:3000.
 
-Explore the "GroupChat" app live by visiting the following link: [GroupChat Live Site](https://group-chat-messanger-app.vercel.app/) 🌐🔗
+## Project structure
 
-Feel free to dive in, experience the future of group communication, and connect like never before! 🎉📱
+```
+src/
+├── components/   # Chat, SignIn, SignOut
+└── store/        # firebase.js (app, auth, db)
+```
+
+
+## Author
+
+**Muhammad Kabir Kaka**, Frontend Engineer (React · Next.js · TypeScript)  
+[GitHub](https://github.com/KabirKaka) · [LinkedIn](https://www.linkedin.com/in/muhammad-kabir-kaka)
